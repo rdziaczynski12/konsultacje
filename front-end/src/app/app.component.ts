@@ -14,11 +14,13 @@ export class AppComponent {
 
   private roles: string[];
   private authority: string;
+  public log: boolean;
  
   constructor(private tokenStorage: TokenStorageService) { }
  
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
+      this.log = true;
       this.roles = this.tokenStorage.getAuthorities();
       this.roles.every(role => {
         if (role === 'ROLE_ADMIN') {
@@ -32,15 +34,17 @@ export class AppComponent {
         return true;
       });
     }
+    else this.log = false;
+  }
+
+  logout() {
+    this.tokenStorage.signOut();
+    window.location.reload();
   }
 
   links : Link []= [
     {name : 'Strona główna' , link :'/home'},
-    {name : 'Panel administratora' , link :'/admin-panel'},
-    {name : 'Zaloguj' , link :'/login'},
-    {name : 'Rejestracja' , link :'/register'}
+    {name : 'Panel administratora' , link :'/admin-panel'}
   ];
-
   activeLink = window.location.pathname;
-
 }

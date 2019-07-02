@@ -1,23 +1,25 @@
 package com.example.backend.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
-public class TypeDish {
+@Table(name = "title")
+public class Title {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @Size(min=3, max = 50)
     private String name;
 
-    public TypeDish(String name) {
+    public Title(@NotBlank @Size(min = 3, max = 50) String name) {
         this.name = name;
     }
 
-    public TypeDish() {
+    public Title() {
     }
 
     public Long getId() {

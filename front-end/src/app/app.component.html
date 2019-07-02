@@ -3,6 +3,11 @@
      (click)="activeLink = link.link"
      [routerLink]="link.link"
      [active]="activeLink == link.link"> {{link.name}} </a>
+  
+  <a mat-tab-link *ngIf="log" (click)="logout()"> Wyloguj </a>
+  <a mat-tab-link *ngIf="log==false" (click)="activeLink = '/login'" routerLink="/login" [active]="activeLink == '/login'"> Zaloguj </a>
+  <a mat-tab-link *ngIf="log==false" (click)="activeLink = '/register'" routerLink="/register" [active]="activeLink == '/register'"> Rejestracja </a>
+
 </nav>
 
 <router-outlet></router-outlet>

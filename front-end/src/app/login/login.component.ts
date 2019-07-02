@@ -5,6 +5,7 @@ import { TokenStorageService } from '../auth/token-storage.service';
 import { AuthLoginInfo } from '../auth/login-info';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -19,13 +20,15 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, 
               private tokenStorage: TokenStorageService,
               private router: Router,
-              public snackBar: MatSnackBar
+              public snackBar: MatSnackBar,
+              private appComponent: AppComponent
               ) { }
  
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
     }
+    this.appComponent.activeLink="/login";
   }
 
   login(): void {
@@ -38,6 +41,8 @@ export class LoginComponent implements OnInit {
           this.tokenStorage.saveUsername(data.username);
           this.tokenStorage.saveAuthorities(data.authorities);
           this.router.navigate(['home']);
+          this.appComponent.ngOnInit();
+          this.appComponent.activeLink="/home";
       },
       error => {
         console.log(error);

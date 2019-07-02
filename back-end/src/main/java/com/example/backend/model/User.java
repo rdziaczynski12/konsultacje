@@ -57,21 +57,34 @@ public class User {
     @Email
     private String email;
 
+    @Size(min=3, max = 100)
+    private String position;
+
+    private boolean activated;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_titles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "title_id"))
+    private Set<Title> titles = new HashSet<>();
+
     public User() {
     }
 
-    public User(String firstName, String lastName, String username, String email, String password) {
+    public User(@NotBlank @Size(min = 3, max = 50) String firstName, @NotBlank @Size(min = 3, max = 50) String lastName, @NotBlank @Size(min = 3, max = 50) String username, @NotBlank @Size(min = 3, max = 100) String password, @NotBlank @Size(max = 50) @Email String email, @Size(min = 3, max = 100) String position, boolean activated) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
         this.email = email;
+        this.position = position;
+        this.activated = activated;
     }
 
     public Long getId() {
@@ -128,5 +141,29 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public boolean isActivated() {
+        return activated;
+    }
+
+    public void setActivated(boolean activated) {
+        this.activated = activated;
+    }
+
+    public Set<Title> getTitles() {
+        return titles;
+    }
+
+    public void setTitles(Set<Title> titles) {
+        this.titles = titles;
     }
 }

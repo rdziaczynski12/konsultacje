@@ -1,5 +1,7 @@
 package com.example.backend.message.request;
 
+import com.example.backend.model.Title;
+
 import java.util.Set;
 
 import javax.validation.constraints.*;
@@ -22,7 +24,13 @@ public class SignUpForm {
     @Email
     private String email;
 
+    private String position;
+
+    private boolean activated;
+
     private Set<String> role;
+
+    private Set<Title> title;
 
     @NotBlank
     @Size(min = 3, max = 40)
@@ -74,5 +82,29 @@ public class SignUpForm {
 
     public void setRole(Set<String> role) {
         this.role = role;
+    }
+
+    public Set<Title> getTitle() {
+        return this.title;
+    }
+
+    public void setTitle(Set<Title> title) {
+        this.title = title;
+    }
+
+    public boolean getActivated() {
+        return activated;
+    }
+
+    public void setActivated(boolean activated) {
+        this.activated = activated;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 }

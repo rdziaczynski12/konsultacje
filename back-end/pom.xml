@@ -12,7 +12,7 @@
 	<artifactId>back-end</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>back-end</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Konsultacje prz</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -29,18 +29,6 @@
 <!--			<artifactId>h2</artifactId>-->
 <!--			<scope>runtime</scope>-->
 <!--		</dependency>-->
-
-		<!--<dependency>-->
-			<!--<groupId>com.microsoft.sqlserver</groupId>-->
-			<!--<artifactId>sqljdbc4</artifactId>-->
-			<!--<version>4.0</version>-->
-		<!--</dependency>-->
-
-		<!--<dependency>-->
-			<!--<groupId>com.microsoft.sqlserver</groupId>-->
-			<!--<artifactId>mssql-jdbc</artifactId>-->
-			<!--<version>7.0.0.jre10</version>-->
-		<!--</dependency>-->
 
 		<dependency>
 			<groupId>org.postgresql</groupId>
