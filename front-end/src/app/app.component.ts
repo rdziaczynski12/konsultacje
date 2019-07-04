@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 import { TokenStorageService } from './auth/token-storage.service';
 
-export interface Link{
-  name : String;
-  link : String;
-}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -37,14 +33,13 @@ export class AppComponent {
     else this.log = false;
   }
 
+  getAuthority(): string {
+    return this.authority;
+  }
+
   logout() {
     this.tokenStorage.signOut();
     window.location.reload();
   }
-
-  links : Link []= [
-    {name : 'Strona główna' , link :'/home'},
-    {name : 'Panel administratora' , link :'/admin-panel'}
-  ];
   activeLink = window.location.pathname;
 }

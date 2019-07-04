@@ -1,59 +1,64 @@
 <div *ngIf="isSignedUp; else signupForm">
-  Your registration is successful. Please login!
+  <h1>Rejestracja udana proszę się zalogować!</h1>
 </div>
  
 <ng-template #signupForm>
-  <div class="row col-sm-6" style="max-width:350px;">
-    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+<div class="content">
+  <h2>Rejestracja</h2>
+    <div style="width: 350px; margin-left: auto; margin-right: auto">
       
-      <div class="form-group">
-        <label for="firstName">Your First name</label>
-        <input type="text" class="form-control" name="firstName" [(ngModel)]="form.firstName" #name="ngModel" required />
-        <div *ngIf="f.submitted && name.invalid">
-          <div *ngIf="firstName.errors.required">First name is required</div>
+      <form>
+        <mat-form-field style="width: 350px">
+          <input matInput placeholder="Imie" (keyup.enter)="register()" [(ngModel)]="form.firstName" name="firstName" required>
+        </mat-form-field>
+
+        <mat-form-field style="width: 350px">
+          <input matInput placeholder="Nazwisko" (keyup.enter)="register()" [(ngModel)]="form.lastName" name="lastName" required>
+        </mat-form-field>
+
+        <mat-form-field style="width: 350px">
+          <input matInput placeholder="Login" (keyup.enter)="register()" [(ngModel)]="form.username" name="username" required>
+        </mat-form-field>
+
+        <mat-form-field style="width: 350px">
+          <input matInput placeholder="E-mail" (keyup.enter)="register()" [(ngModel)]="form.email" name="email" required email>
+        </mat-form-field>
+
+        <mat-form-field style="width: 350px;">
+          <input matInput type="password" placeholder="Hasło" (keyup.enter)="register()" [(ngModel)]="form.password" name="password" required minlength="6">
+        </mat-form-field>
+
+        <mat-form-field style="width: 350px;">
+          <input matInput type="password" placeholder="Powtórz hasło" (keyup.enter)="register()" [(ngModel)]="form.replyPassword" name="replyPassword" required minlength="6"> 
+        </mat-form-field>
+
+        <mat-form-field style="width: 350px">
+          <mat-label>Stanowisko</mat-label>
+          <mat-select [(ngModel)]="form.position" name="position" required>
+            <mat-option value="Adiunkt">Adiunkt</mat-option>
+            <mat-option value="Profesor">Profesor</mat-option>
+            <mat-option value="Asystent">Asystent</mat-option>
+            <mat-option value="Starszy Wykładowca">Starszy Wykładowca</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field style="width: 350px">
+          <mat-label>Tytuł naukowy</mat-label>
+          <mat-select [(ngModel)]="form.titles" name="titles" multiple required>
+            <mat-option *ngFor="let title of titleList" [value]="title.name">{{title.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="loginButton">
+            <a mat-stroked-button class="buttonLogin" (click)="register()">Zarejestruj się</a>
         </div>
-      </div>
-      
-      <div class="form-group">
-        <label for="lastName">Your Last name</label>
-        <input type="text" class="form-control" name="lastName" [(ngModel)]="form.lastName" #name="ngModel" required />
-        <div *ngIf="f.submitted && name.invalid">
-          <div *ngIf="lastName.errors.required">Last name is required</div>
-        </div>
-      </div>
-     
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel"
-          required />
-        <div *ngIf="f.submitted && username.invalid">
-          <div *ngIf="username.errors.required">Username is required</div>
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" required email />
-        <div *ngIf="f.submitted && email.invalid">
-          <div *ngIf="email.errors.required">Email is required</div>
-          <div *ngIf="email.errors.email">Email must be a valid email address</div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"
-          required minlength="6" />
-        <div *ngIf="f.submitted && password.invalid">
-          <div *ngIf="password.errors.required">Password is required</div>
-          <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
-        </div>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary">Register</button>
-        <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
-          Signup failed!<br/>{{errorMessage}}
-        </div>
-      </div>
-    </form>
-  </div>
+      </form>
+
+      <h3>Posiadasz już konto?<br>
+        <a routerLink="/login">Zaloguj się!</a>
+      </h3>
+
+    </div>
+</div>
+
 </ng-template>

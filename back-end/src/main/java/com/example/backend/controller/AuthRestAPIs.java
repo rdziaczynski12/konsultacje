@@ -11,8 +11,10 @@ import com.example.backend.message.response.JwtResponse;
 import com.example.backend.message.response.ResponseMessage;
 import com.example.backend.model.Role;
 import com.example.backend.model.RoleName;
+import com.example.backend.model.Title;
 import com.example.backend.model.User;
 import com.example.backend.repository.RoleRepository;
+import com.example.backend.repository.TitleRepository;
 import com.example.backend.repository.UserRepository;
 import com.example.backend.security.jwt.JwtProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +44,9 @@ public class AuthRestAPIs {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    TitleRepository titleRepository;
 
     @Autowired
     RoleRepository roleRepository;
@@ -90,6 +95,8 @@ public class AuthRestAPIs {
 
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
+        Set<String> strTitles = signUpRequest.getTitle();
+        Set<Title> titles = new HashSet<>();
 
         strRoles.forEach(role -> {
             switch (role) {
@@ -112,7 +119,15 @@ public class AuthRestAPIs {
             }
         });
 
+        strTitles.forEach(title -> {
+
+                    Title titleDb = titleRepository.findByName(title)
+                            .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User title not find."));
+                    titles.add(titleDb);
+        });
+
         user.setRoles(roles);
+        user.setTitles(titles);
         userRepository.save(user);
 
         return new ResponseEntity<>(new ResponseMessage("User registered successfully!"), HttpStatus.OK);

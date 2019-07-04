@@ -59,7 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 authorizeRequests()
                 .antMatchers("/api/signup", "/api/signin",
                         "/favicon.ico", "/main.**.js", "/styles.**.css", "/polyfills.**.js", "/runtime.**.js",
-                        "/home", "/", "/login", "/register", "/admin-panel").permitAll()
+                        "/home", "/**", "/login", "/register", "/admin-panel").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()

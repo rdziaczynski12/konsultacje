@@ -30,7 +30,7 @@ public class SignUpForm {
 
     private Set<String> role;
 
-    private Set<Title> title;
+    private Set<String> title;
 
     @NotBlank
     @Size(min = 3, max = 40)
@@ -84,11 +84,11 @@ public class SignUpForm {
         this.role = role;
     }
 
-    public Set<Title> getTitle() {
+    public Set<String> getTitle() {
         return this.title;
     }
 
-    public void setTitle(Set<Title> title) {
+    public void setTitle(Set<String> title) {
         this.title = title;
     }
 

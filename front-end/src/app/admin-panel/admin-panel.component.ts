@@ -3,6 +3,8 @@ import {UserService} from '../service/user.service';
 import { User } from '../model/user';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { AppComponent } from '../app.component';
+import { Router } from '@angular/router';
 
 export interface DialogData {
   user: User;
@@ -14,13 +16,18 @@ export interface DialogData {
   styleUrls: ['./admin-panel.component.css']
 })
 export class AdminPanelComponent implements OnInit {
-  constructor(private userService: UserService, public dialog: MatDialog ) { }
+  constructor(private userService: UserService, 
+    private appComponent: AppComponent,
+    private router: Router,
+    public dialog: MatDialog ) { }
 
   displayedColumns: string[] = ['id', 'firstName', 'lastName', "username", "edit", "delete"];
   
   user: User = new User();
   users: User[];
   ngOnInit() {
+    if(this.appComponent.getAuthority()!="admin")
+    this.router.navigate(['home']);
     this.getAllUser();
   }
 

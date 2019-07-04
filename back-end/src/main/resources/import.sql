@@ -6,3 +6,9 @@ INSERT INTO DB_USER (first_Name, last_Name, username, password, email, position,
 INSERT INTO USER_ROLES (USER_ID, ROLE_ID) values (1, 1);
 INSERT INTO USER_ROLES (USER_ID, ROLE_ID) values (1, 2);
 INSERT INTO USER_ROLES (USER_ID, ROLE_ID) values (1, 3);
+
+INSERT INTO TITLE (name) values ('prof');
+INSERT INTO TITLE (name) values ('dr hab');
+INSERT INTO TITLE (name) values ('dr');
+INSERT INTO TITLE (name) values ('mgr');
+INSERT INTO TITLE (name) values ('inż');

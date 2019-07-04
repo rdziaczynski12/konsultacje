@@ -17,8 +17,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MatSnackBarModule } from "@angular/material";
+import {MatSelectModule} from '@angular/material/select';
 
 import { httpInterceptorProviders } from './auth/auth-interceptor';
+import { MyPanelComponent } from './my-panel/my-panel.component';
+import { ConsultationsComponent } from './consultations/consultations.component';
 
 
 @NgModule({
@@ -29,6 +32,8 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
     EditUserDialog,
     LoginComponent,
     RegisterComponent,
+    MyPanelComponent,
+    ConsultationsComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +50,7 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
     MatTabsModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatSelectModule,
   ],
   entryComponents: [
     EditUserDialog,

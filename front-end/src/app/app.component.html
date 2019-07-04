@@ -1,9 +1,8 @@
 <nav mat-tab-nav-bar backgroundColor="primary">
-  <a mat-tab-link *ngFor="let link of links"
-     (click)="activeLink = link.link"
-     [routerLink]="link.link"
-     [active]="activeLink == link.link"> {{link.name}} </a>
-  
+  <a mat-tab-link (click)="activeLink = '/home'" routerLink="/home" [active]="activeLink == '/home'"> Strona główna </a>
+  <a mat-tab-link *ngIf="log" (click)="activeLink = '/consultations'" routerLink="/consultations" [active]="activeLink == '/consultations'"> Konsultacje </a>
+  <a mat-tab-link *ngIf="authority=='pm'||authority=='admin'" (click)="activeLink = '/my-panel'" routerLink="/my-panel" [active]="activeLink == '/my-panel'"> Moje konsultacje </a>
+  <a mat-tab-link *ngIf="authority=='admin'" (click)="activeLink = '/admin-panel'" routerLink="/admin-panel" [active]="activeLink == '/admin-panel'"> Panel administratora </a>
   <a mat-tab-link *ngIf="log" (click)="logout()"> Wyloguj </a>
   <a mat-tab-link *ngIf="log==false" (click)="activeLink = '/login'" routerLink="/login" [active]="activeLink == '/login'"> Zaloguj </a>
   <a mat-tab-link *ngIf="log==false" (click)="activeLink = '/register'" routerLink="/register" [active]="activeLink == '/register'"> Rejestracja </a>

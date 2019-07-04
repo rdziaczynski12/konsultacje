@@ -31,4 +31,8 @@ export class UserService {
     return this.http.put(`${this.API}/user/edit`, user, httpOptions);
   }
 
+  getUserTitle(): Observable<any>{
+    return this.http.get(`${this.API}/get/title`);
+  }
+
 }
