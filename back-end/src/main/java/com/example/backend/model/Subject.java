@@ -5,6 +5,8 @@ import javax.validation.constraints.NotBlank;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table(name = "subject")
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

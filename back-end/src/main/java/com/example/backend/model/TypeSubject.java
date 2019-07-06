@@ -1,10 +1,10 @@
 package com.example.backend.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+@Entity
+@Table(name = "typeSubject")
 public class TypeSubject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

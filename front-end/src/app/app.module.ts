@@ -22,6 +22,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { httpInterceptorProviders } from './auth/auth-interceptor';
 import { MyPanelComponent } from './my-panel/my-panel.component';
 import { ConsultationsComponent } from './consultations/consultations.component';
+import {MatCardModule} from '@angular/material/card';
+import {ConsultationsService} from './service/consultations.service';
 
 
 @NgModule({
@@ -51,12 +53,14 @@ import { ConsultationsComponent } from './consultations/consultations.component'
     MatDialogModule,
     MatSnackBarModule,
     MatSelectModule,
+    MatCardModule,
   ],
   entryComponents: [
     EditUserDialog,
   ],
   providers: [
     UserService,
+    ConsultationsService,
     httpInterceptorProviders,
   ],
   bootstrap: [AppComponent]

@@ -7,12 +7,13 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table(name = "consultation")
 public class Consultation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     private Date date;
 
     @NotBlank

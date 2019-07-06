@@ -18,6 +18,7 @@ export class AppComponent {
     if (this.tokenStorage.getToken()) {
       this.log = true;
       this.roles = this.tokenStorage.getAuthorities();
+      this.tokenStorage.getUsername
       this.roles.every(role => {
         if (role === 'ROLE_ADMIN') {
           this.authority = 'admin';
