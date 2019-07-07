@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { AdminPanelComponent, EditUserDialog } from './admin-panel/admin-panel.component';
+import { AdminPanelComponent, EditUserDialog, AddDialog } from './admin-panel/admin-panel.component';
 import {UserService} from './service/user.service';
 import { HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -32,6 +32,7 @@ import {ConsultationsService} from './service/consultations.service';
     HomeComponent,
     AdminPanelComponent,
     EditUserDialog,
+    AddDialog,
     LoginComponent,
     RegisterComponent,
     MyPanelComponent,
@@ -57,6 +58,7 @@ import {ConsultationsService} from './service/consultations.service';
   ],
   entryComponents: [
     EditUserDialog,
+    AddDialog,
   ],
   providers: [
     UserService,

@@ -1,0 +1,14 @@
+<div>
+    <h1 mat-dialog-title >Dodawanie przedmiotw:</h1>
+</div>
+<form>
+    <mat-form-field style="width: 350px">
+        <mat-label>Przedmioty</mat-label>
+        <mat-select [(ngModel)]="form.subjects" name="mySubjects" multiple required>
+        <mat-option *ngFor="let subject of subjects" [value]="subject">{{subject.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-flat-button class="saveBtn" (click)="addSubject()">Dodaj</button>
+    <button mat-raised-button class="cancelBtn" (click)="cancel()">Anuluj</button>
+</form>

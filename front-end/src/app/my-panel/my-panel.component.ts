@@ -27,9 +27,12 @@ export class MyPanelComponent implements OnInit {
   ngOnInit() {
     if(!(this.appComponent.getAuthority()=='pm'||this.appComponent.getAuthority()=='admin'))
       this.router.navigate(['login']);
-      this.consultationService.getAllMySubject(this.tokenStorage.getUsername()).subscribe( data => {
+      this.consultationService.getAllSubject().subscribe( data => {
           this.subjects = data;
       });
+      // this.consultationService.getAllMySubject(this.tokenStorage.getUsername()).subscribe( data => {
+      //   this.subjects = data;
+      // });
       this.consultationService.getAllSpecialization().subscribe( data => {
         this.specializations = data;
       });

@@ -20,7 +20,7 @@ export class SignUpInfo {
         this.email = email;
         this.password = password;
         this.position = position;
-        this.activated = false;
+        this.activated = true;
         this.role = ['user'];
         this.title = title;
     }

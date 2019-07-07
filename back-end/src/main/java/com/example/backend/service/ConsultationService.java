@@ -55,6 +55,11 @@ public class ConsultationService {
 
     }
 
+    public Collection<Subject> getAllSubject(){
+        return subjectRepository.findAll();
+
+    }
+
     public Collection<Specialization> getAllSpecialization(){
         return specializationRepository.findAll();
 

@@ -5,6 +5,8 @@ import { Validators, FormControl, FormGroup } from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { AppComponent } from '../app.component';
 import { Router } from '@angular/router';
+import { ConsultationsService } from '../service/consultations.service';
+import { Observable } from 'rxjs';
 
 export interface DialogData {
   user: User;
@@ -39,6 +41,18 @@ export class AdminPanelComponent implements OnInit {
 
   openEditUser(user: User){
     const dialogRef = this.dialog.open(EditUserDialog, {
+      width: '450px',
+      data: { user}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result != null) {
+        this.getAllUser();
+      }
+    });
+  }
+
+  openAdd(user: User){
+    const dialogRef = this.dialog.open(AddDialog, {
       width: '450px',
       data: { user}
     });
@@ -104,6 +118,49 @@ export class EditUserDialog implements OnInit {
         this.dialogRef.close(this.user);
       })
     } 
+  }
+
+}
+
+
+@Component({
+  selector: 'admin-panel-add',
+  templateUrl: './admin-panel-add.component.html',
+  styleUrls: ['./admin-panel-add.component.css']
+})
+export class AddDialog implements OnInit {
+
+  user: User = new User();
+
+  subjects: any;
+  form: any = {};
+
+  constructor(public dialogRef: MatDialogRef<AddDialog>,
+    private consultationService: ConsultationsService,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private userService: UserService,
+  ) {
+    this.user = this.data.user;
+  }
+
+  ngOnInit(){
+    this.consultationService.getAllMySubject(this.user.username.toString()).subscribe(data => {
+      this.form.subjects = data;
+    });
+    this.consultationService.getAllSubject().subscribe(data => {
+      this.subjects = data;
+    });
+
+  }
+
+  cancel(){
+    this.dialogRef.close();
+  }
+
+  addSubject(){
+    this.consultationService.addSubject(this.form.subjects).subscribe(data => {
+      this.dialogRef.close();
+    });
   }
 
 }

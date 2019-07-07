@@ -26,15 +26,15 @@ INSERT INTO specialization (name, type) values ('Automatyka i robotyka', 'inżyn
 INSERT INTO specialization (name, type) values ('Informatyka', 'inżynierskie');
 
 INSERT INTO subject( name, semester, id_specialization)  values ('Roboty mobilne', 6, 1);
-INSERT INTO subject( name, semester, id_specialization)  values ('Bezpieczeństwo', 6, 1);
+INSERT INTO subject( name, semester, id_specialization)  values ('Bezpieczeństwo Systemów', 6, 1);
 INSERT INTO subject( name, semester, id_specialization)  values ('Informatyka', 5, 2);
 
 INSERT into subject_user (subject_id, user_id) values (1, 1);
 INSERT into subject_user (subject_id, user_id) values (2, 1);
 INSERT into subject_user (subject_id, user_id) values (3, 1);
 
-INSERT INTO consultation (active, "date", description, is_default, title, id_user) values (true, CURRENT_DATE, 'to jest opis posta', true, 'to jst tytul', 1 );
-INSERT INTO consultation (active, "date", description, is_default, title, id_user) values (true, CURRENT_DATE, 'to jest opis posta 2', true, 'to jst tytul 2', 1 );
+INSERT INTO consultation (active, "date", description, is_default, title, id_user) values (true, CURRENT_DATE, 'Konsultacje testowe odbędą się w dniu 8 lipca 2019 o godzinie 13:15.',  true, 'Post Testowy', 1 );
+INSERT INTO consultation (active, "date", description, is_default, title, id_user) values (true, CURRENT_DATE, 'Konsultacje testowe z dnia 5 lipca 2019r. będą odwołane', true,  'Post Testowy nr 2', 1 );
 
 insert into consultation_subject (consultation_id, subject_id) values (1, 1);
 insert into consultation_subject (consultation_id, subject_id) values (2, 2);

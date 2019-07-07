@@ -39,10 +39,11 @@
             <mat-option value="Profesor">Profesor</mat-option>
             <mat-option value="Asystent">Asystent</mat-option>
             <mat-option value="Starszy Wykładowca">Starszy Wykładowca</mat-option>
+            <mat-option value="Student">Student</mat-option>
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field style="width: 350px">
+        <mat-form-field style="width: 350px" *ngIf="form.position!='Student'">
           <mat-label>Tytuł naukowy</mat-label>
           <mat-select [(ngModel)]="form.titles" name="titles" multiple required>
             <mat-option *ngFor="let title of titleList" [value]="title.name">{{title.name}}</mat-option>

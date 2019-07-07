@@ -12,17 +12,16 @@ import { post } from 'selenium-webdriver/http';
 })
 export class ConsultationsComponent implements OnInit {
 
-  private posts: Posts[];
+  posts: Posts[];
   constructor(private appComponent: AppComponent,
     private consultationService: ConsultationsService,
     private router: Router,) { }
 
   ngOnInit() {
     if(!this.appComponent.log)
-    this.router.navigate(['login']);
+      this.router.navigate(['login']);
     this.consultationService.getAllPosts().subscribe(data => {
       this.posts=data;
-      console.log(this.posts);
     });
   }
 

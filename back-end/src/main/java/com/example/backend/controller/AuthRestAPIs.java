@@ -119,12 +119,21 @@ public class AuthRestAPIs {
             }
         });
 
-        strTitles.forEach(title -> {
+        if(!(user.getPosition().equals("Student"))){
+            Role pmRole2 = roleRepository.findByName(RoleName.ROLE_MODER)
+                    .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
+            roles.add(pmRole2);
+        }
 
-                    Title titleDb = titleRepository.findByName(title)
-                            .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User title not find."));
-                    titles.add(titleDb);
-        });
+
+
+        if(strTitles!=null)
+            strTitles.forEach(title -> {
+
+                        Title titleDb = titleRepository.findByName(title)
+                                .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User title not find."));
+                        titles.add(titleDb);
+            });
 
         user.setRoles(roles);
         user.setTitles(titles);

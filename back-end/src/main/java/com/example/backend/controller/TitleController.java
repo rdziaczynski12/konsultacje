@@ -17,7 +17,6 @@ public class TitleController {
     @Autowired
     TitleService titleService;
 
-    //@PreAuthorize("permitAll()")
     @GetMapping("/get/title")
     public Collection<Title> getAllTitle(){
         return titleService.getAllTitle();

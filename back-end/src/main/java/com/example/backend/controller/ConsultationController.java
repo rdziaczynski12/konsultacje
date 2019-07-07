@@ -21,33 +21,47 @@ public class ConsultationController {
     @Autowired
     ConsultationService consultationService;
 
-    //@PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MODER')")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MODER')")
     @GetMapping("/consultations")
     public Collection<Post> getAllPost(){
         return consultationService.getAllPost();
     }
 
-    //@PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MODER')")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('MODER')")
     @GetMapping(value ="/my-subject/{username}")
     public Collection<Subject> getAllMySubject(@PathVariable(name="username")String username){
         return consultationService.getAllMySubject(username);
     }
 
-    //@PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MODER')")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('MODER')")
+    @GetMapping(value ="/my-subject")
+    public Collection<Subject> getAllSubject(){
+        return consultationService.getAllSubject();
+    }
+
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MODER')")
     @GetMapping(value ="/specialization")
     public Collection<Specialization> getAllSpecialization(){
         return consultationService.getAllSpecialization();
     }
 
-    //@PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MODER')")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN') or hasRole('MODER')")
     @GetMapping(value ="/type")
     public Collection<TypeSubject> getAllType(){
         return consultationService.getAllType();
     }
 
+    @PreAuthorize("hasRole('ADMIN') or hasRole('MODER')")
     @PostMapping("/post/add")
     public int addPost(@Valid @RequestBody NewPost newPost) {
         consultationService.addPost(newPost);
+        return 1;
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/subject/add")
+    public int addSubject(@Valid @RequestBody Long id_user, Collection<Subject> subjects) {
+        //consultationService.addSubject(subjects);
         return 1;
     }
 }

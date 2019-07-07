@@ -24,6 +24,10 @@ export class ConsultationsService {
     return this.http.get(`${this.API}/my-subject/${username}`);
   }
 
+  getAllSubject(): Observable<any> {
+    return this.http.get(`${this.API}/my-subject`);
+  }
+
   getAllSpecialization(): Observable<any> {
     return this.http.get(`${this.API}/specialization`);
   }
@@ -34,5 +38,9 @@ export class ConsultationsService {
 
   addNewPost(newPost: NewPost): Observable<any> {
     return this.http.post(`${this.API}/post/add`, newPost, httpOptions);
+  }
+
+  addSubject(subjects: any): Observable<any> {
+    return this.http.post(`${this.API}/subject/add`, subjects, httpOptions);
   }
 }
