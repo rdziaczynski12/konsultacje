@@ -1,5 +1,5 @@
 # Serwis do obsługi konsoltacji na Politechnice Rzeszowskiej
-Wykożystane technologie:
+Wykorzystane technologie:
 - Angular (front-end)
 - Spring (back-end)
 - Java
